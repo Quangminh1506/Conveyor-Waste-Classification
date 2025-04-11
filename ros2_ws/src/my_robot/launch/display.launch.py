@@ -13,8 +13,13 @@ def generate_launch_description():
     with open(urdf_file, 'r') as infp:
         robot_desc = infp.read()
 
+    # Đường dẫn tới file cấu hình RViz
+    rviz_config_file = os.path.join(
+        get_package_share_directory('my_robot'),
+        'rviz', 'robot_display.rviz')
+
     return LaunchDescription([
-        # Khởi chạy robot_state_publisher
+        # Node robot_state_publisher
         Node(
             package='robot_state_publisher',
             executable='robot_state_publisher',
@@ -22,11 +27,22 @@ def generate_launch_description():
             output='screen',
             parameters=[{'robot_description': robot_desc}]
         ),
-        # Khởi chạy RViz
+
+        # Node joint_state_publisher_gui
+        Node(
+            package='joint_state_publisher_gui',
+            executable='joint_state_publisher_gui',
+            name='joint_state_publisher_gui',
+            output='screen',  # In log ra màn hình
+            parameters=[{'robot_description': robot_desc}],
+        ),
+
+        # Node RViz
         Node(
             package='rviz2',
             executable='rviz2',
             name='rviz2',
-            output='screen'
+            output='screen',
+            arguments=['-d', rviz_config_file]
         )
     ])
