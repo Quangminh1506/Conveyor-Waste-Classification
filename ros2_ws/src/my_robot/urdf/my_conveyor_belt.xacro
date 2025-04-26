@@ -1,16 +1,16 @@
 <?xml version="1.0"?>
-<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="my_conveyor_belt_robot"> 
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="my_conveyor_belt"> 
 
-    <xacro:property name="base_length" value="2.4"/>
-    <xacro:property name="base_width" value="0.4"/>
-    <xacro:property name="base_height" value="0.2"/>
-    <xacro:property name="axle_length" value="0.15"/> 
-    <xacro:property name="axle_width" value="0.10"/> 
-    <xacro:property name="axle_height" value="0.06"/> 
-    <xacro:property name="arm_length" value="0.55"/> 
-    <xacro:property name="arm_width" value="0.10"/>  
-    <xacro:property name="arm_height" value="0.06"/> 
-    <xacro:property name="axle_spacing" value="0.65"/>
+    <xacro:property name="base_length" value="3.0"/>
+    <xacro:property name="base_width" value="0.32"/>
+    <xacro:property name="base_height" value="0.8"/>
+    <xacro:property name="axle_length" value="0.03"/> 
+    <xacro:property name="axle_width" value="0.08"/> 
+    <xacro:property name="axle_height" value="0.02"/> 
+    <xacro:property name="arm_length" value="0.70"/> 
+    <xacro:property name="arm_width" value="0.032"/>  
+    <xacro:property name="arm_height" value="0.016"/> 
+    <xacro:property name="axle_spacing" value="0.80"/>
     <xacro:property name="pi_" value="3.14159265359"/>
 
     <!-- Materials -->
@@ -25,7 +25,7 @@
     </material>
 
     <!-- Macros for Links -->
-    <xacro:macro name="box_link" params="name length width height material">
+    <xacro:macro name="box_link" params="name length width height material mass">
         <link name="${name}">
             <visual>
                 <geometry>
@@ -38,10 +38,16 @@
                 <geometry>
                     <box size="${length} ${width} ${height}"/>
                 </geometry>
-                <origin rpy="0 0 0" xyz="${-length/4} 0 0"/>
+                <origin rpy="0 0 0" xyz="${-length/2} 0 0"/>
             </collision>
-            <inertial> <mass value="0.1"/> <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/> </inertial>
+            <inertial>
+        <mass value="${mass}"/>
+        <inertia ixx="1000" ixy="0.0" ixz="0.0"
+                 iyy="1000" iyz="0.0"
+                 izz="1000"/>
+      </inertial>
         </link>
+
     </xacro:macro>
 
     <!-- Macros for Joints -->
@@ -59,34 +65,35 @@
             <child link="${child}"/>
             <origin xyz="${x} ${y} ${z}" rpy="${rpy}"/>
             <axis xyz="${axis}"/>
-            <limit lower="${lower_limit}" upper="${upper_limit}" effort="100" velocity="2"/>
+            <limit lower="${lower_limit}" upper="${upper_limit}" effort="1000" velocity="100"/>
         </joint>
     </xacro:macro>
 
     <!-- World Link and Joint to ground the robot -->
-    <link name="world"/>
+    <link name="world_link"/>
     <joint name="world_joint" type="fixed">
-        <parent link="world"/>
+        <parent link="world_link"/>
         <child link="base_link"/>
 
-        <origin xyz="0 0 ${arm_height + axle_height + base_height/2}" rpy="0 0 0"/>
+        <origin xyz="0 0 0" rpy="0 0 ${pi * 1.5}"/>
     </joint>
 
+
     <!-- Base Link -->
-    <xacro:box_link name="base_link" length="${base_length}" width="${base_width}" height="${base_height}" material="gray"/>
+    <xacro:box_link name="base_link" length="${base_length}" width="${base_width}" height="${base_height + 1}" material="gray" mass="10000.0"/>
 
     <!-- Macro for Axle and Bar unit -->
     <xacro:macro name="axle_and_arm" params="index">
 
-        <xacro:property name="x_pos" value="${-base_length + axle_spacing * (index + 0.6)}"/>
+        <xacro:property name="x_pos" value="${-base_length + axle_spacing * (index + 0.23)}"/>
 
-        <xacro:box_link name="axle_${index}" length="${axle_length}" width="${axle_width}" height="${axle_height}" material="yellow"/>
+        <xacro:box_link name="axle_${index}" length="${axle_length}" width="${axle_width}" height="${axle_height}" material="yellow" mass="200.0"/>
 
         <xacro:fixed_joint name="base_to_axle_${index}" parent="base_link" child="axle_${index}"
-                           x="${x_pos}" y="${-base_width/2 - axle_width/2}" z="${-base_height/2 + axle_height/2}"/>
+                           x="${x_pos}" y="${-base_width/2 - axle_width/2}" z="${-base_height/6 + axle_height}"/>
 
         <!-- Arm (Box) Link -->
-        <xacro:box_link name="arm_${index}" length="${arm_length}" width="${arm_width}" height="${arm_height}" material="black"/>
+        <xacro:box_link name="arm_${index}" length="${arm_length}" width="${arm_width}" height="${arm_height}" material="black" mass="500.0"/>
 
         <!-- Joint: Axle Link to Bar Link (Revolute) -->
         <xacro:revolute_joint name="axle_${index}_to_arm_${index}"
@@ -112,10 +119,13 @@
   <gazebo>
     <plugin name="gazebo_ros2_control" filename="libgazebo_ros2_control.so">
       <robot_namespace>my_conveyor_belt_robot</robot_namespace>
-      <parameters>/home/admin1/ros2_ws/install/my_conveyor_gazebo/share/my_conveyor_gazebo/config/controllers.yaml</parameters>
+      <parameters>$(find my_conveyor_gazebo)/config/controllers.yaml</parameters>
+      <robot_sim_type>gazebo_ros2_control/GazeboSystem</robot_sim_type>
     </plugin>
   </gazebo>
-  
+
+
+
   <!-- ROS 2 Control hardware interface -->
   <ros2_control name="GazeboSystem" type="system">
     <hardware>

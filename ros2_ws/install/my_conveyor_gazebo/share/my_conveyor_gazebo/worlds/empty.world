@@ -52,11 +52,51 @@
       </attenuation>
       <direction>-0.5 0.1 -0.9</direction>
     </light>
+    <!-- Khối hộp để kiểm tra va chạm -->
+
+    <model name="test_box">
+      <pose>0 0 1 0 0 0</pose> 
+      <static>false</static> 
+      <link name="link">
+        <inertial>
+          <mass value="1.0"/> 
+          <inertia>
+            <ixx>0.01</ixx>
+            <ixy>0.0</ixy>
+            <ixz>0.0</ixz>
+            <iyy>0.01</iyy>
+            <iyz>0.0</iyz>
+            <izz>0.01</izz>
+          </inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry>
+            <box>
+              <size>0.2 0.2 0.2</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <box>
+              <size>0.2 0.2 0.2</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Red</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+    </model>
     <!-- Vật lý -->
     <physics type="ode">
-      <max_step_size>0.001</max_step_size>
+      <max_step_size>0.001</max_step_size> <!-- Đảm bảo bước nhỏ để tính toán va chạm chính xác -->
       <real_time_factor>1</real_time_factor>
       <real_time_update_rate>1000</real_time_update_rate>
     </physics>
+    <gravity>0 0 -9.81</gravity>
   </world>
 </sdf>

@@ -1,1 +1,0 @@
-/home/admin1/ros2_ws/build/turtlesim_msgs/ament_cmake_export_libraries/ament_cmake_export_libraries-extras.cmake

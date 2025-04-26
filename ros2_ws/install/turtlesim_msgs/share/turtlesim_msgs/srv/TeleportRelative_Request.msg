@@ -1,1 +1,0 @@
-/home/admin1/ros2_ws/build/turtlesim_msgs/rosidl_cmake/srv/TeleportRelative_Request.msg

@@ -1,1 +1,0 @@
-/home/admin1/ros2_ws/build/turtlesim_msgs/rosidl_typesupport_fastrtps_cpp/turtlesim_msgs/msg/detail/color__rosidl_typesupport_fastrtps_cpp.hpp

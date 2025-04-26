@@ -1,1 +1,0 @@
-/home/admin1/ros2_ws/build/turtlesim_msgs/rosidl_typesupport_fastrtps_c/turtlesim_msgs/srv/detail/teleport_absolute__rosidl_typesupport_fastrtps_c.h
