@@ -18,7 +18,7 @@
         <geometry>
           <mesh>
             <scale>0.2 0.2 0.2</scale>
-            <uri>model://glass_block/meshes/glass_block.stl</uri>
+            <uri>model://coca_block/meshes/glass_block.stl</uri>
           </mesh>
         </geometry>
         <surface>
@@ -31,7 +31,7 @@
         <geometry>
           <mesh>
             <scale>0.2 0.2 0.2</scale>
-            <uri>model://glass_block/meshes/glass_block.dae</uri>
+            <uri>model://coca_block/meshes/glass_block.dae</uri>
           </mesh>
         </geometry>
       </visual>
