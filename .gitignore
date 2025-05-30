@@ -172,3 +172,11 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+# ignore ROS 2 build artifacts
+wc_ws/build/
+wc_ws/install/
+wc_ws/log/
+
+# ignore editor files, etc.
+.vscode/
+.idea/
