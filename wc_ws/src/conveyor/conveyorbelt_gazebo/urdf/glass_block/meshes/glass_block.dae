@@ -62,14 +62,14 @@
     </effect>
     <effect id="label_001-effect">
       <profile_COMMON>
-        <newparam sid="glass_block_jpg-surface">
+        <newparam sid="glass_jpg-surface">
           <surface type="2D">
-            <init_from>glass_block_jpg</init_from>
+            <init_from>glass_jpg</init_from>
           </surface>
         </newparam>
-        <newparam sid="glass_block_jpg-sampler">
+        <newparam sid="glass_jpg-sampler">
           <sampler2D>
-            <source>glass_block_jpg-surface</source>
+            <source>glass_jpg-surface</source>
           </sampler2D>
         </newparam>
         <technique sid="common">
@@ -78,7 +78,7 @@
               <color sid="emission">0 0 0 1</color>
             </emission>
             <diffuse>
-              <texture texture="glass_block_jpg-sampler" texcoord="UVMap"/>
+              <texture texture="glass_jpg-sampler" texcoord="UVMap"/>
             </diffuse>
             <index_of_refraction>
               <float sid="ior">1.5</float>
@@ -89,8 +89,8 @@
     </effect>
   </library_effects>
   <library_images>
-    <image id="glass_block_jpg" name="glass_block_jpg">
-      <init_from>glass_block.jpg</init_from>
+    <image id="glass_jpg" name="glass_jpg">
+      <init_from>glass.jpg</init_from>
     </image>
   </library_images>
   <library_materials>

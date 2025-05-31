@@ -9,6 +9,9 @@ from gazebo_msgs.srv import SpawnEntity
 from geometry_msgs.msg import Pose
 from std_msgs.msg import String
 
+# ← Make sure this import is here:
+from ament_index_python.packages import get_package_share_directory
+
 class FileSpawner(Node):
     def __init__(self):
         super().__init__('file_spawner')
@@ -86,11 +89,14 @@ class FileSpawner(Node):
             return
 
         e = self.entries[self.counter]
-        # find the model file
-        share = os.getenv('AMENT_PREFIX_PATH').split(':')[0]
-        model_path = os.path.join(
-            share, 'share', self.model_package, 'urdf', e['sdf']
-        )
+        # ----- P A T C H E D   L I N E   H E R E -----
+        # Old: share = os.getenv('AMENT_PREFIX_PATH').split(':')[0]
+        #      model_path = os.path.join(share, 'share', self.model_package, 'urdf', e['sdf'])
+        # New (directly load from workspace package “conveyorbelt_gazebo/urdf/”):
+        share = get_package_share_directory(self.model_package)
+        model_path = os.path.join(share, 'urdf', e['sdf'])
+        # -----------------------------------------------
+
         if not os.path.isfile(model_path):
             self.get_logger().error(f"Model not found: {model_path}")
             self.counter += 1

@@ -3,16 +3,9 @@
 #   model_sdf, prefix[, x, y, z, roll, pitch, yaw]
 #
 # Lines starting with “#” or blank lines are ignored.
-
-coca.sdf,      coca
-metal.sdf,     metal
-metal.sdf, metal3,
-coca.sdf, coca1,
-metal.sdf, metal2,
-
-organic.sdf,    organic1,    
-metal.sdf, metal2,
-
-organic.sdf,    organic2,    
+coca.sdf,      coca,
+metal.sdf,     metal,
+glass.sdf, glass,
+plastic.sdf, plastic
 
 
