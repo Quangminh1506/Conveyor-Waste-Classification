@@ -55,9 +55,21 @@ def generate_launch_description():
         )
     )
 
+    # 5) Trash‐Bin spawner (src/trash_bin)
+    trash_bin_launch = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource(
+            os.path.join(
+                get_pkg('trash_bin'),
+                'launch',
+                'spawn_trash_bins.launch.py'
+            )
+        )
+    )
+
     return LaunchDescription([
         conveyor_launch,
         pushers_launch,
         yolobot_launch,
         controller_node,
+        trash_bin_launch,   # <— This line spawns the 5 trash bins
     ])

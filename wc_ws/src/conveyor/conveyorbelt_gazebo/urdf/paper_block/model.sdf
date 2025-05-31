@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <sdf version="1.6">
-  <model name="glass_block">
+  <model name="paper_block">
     <!-- dynamic, not static -->
     <static>false</static>
     <!-- X  Y   Z    R      P    Y -->
@@ -18,7 +18,7 @@
         <geometry>
           <mesh>
             <scale>0.2 0.2 0.2</scale>
-            <uri>model://coca_block/meshes/glass_block.stl</uri>
+            <uri>model://paper_block/meshes/paper_block.stl</uri>
           </mesh>
         </geometry>
         <surface>
@@ -31,7 +31,7 @@
         <geometry>
           <mesh>
             <scale>0.2 0.2 0.2</scale>
-            <uri>model://coca_block/meshes/glass_block.dae</uri>
+            <uri>model://paper_block/meshes/paper_block.dae</uri>
           </mesh>
         </geometry>
       </visual>

@@ -14,7 +14,7 @@ class ConveyorController(Node):
         #Config hold, move time of arm
         self.update_rate = 300.0  # 300 Hz
         self.move_duration = 1.0 
-        self.hold_duration = 5.0  # seconds to hold position
+        self.hold_duration = 1.75  # seconds to hold position
         self.num_steps = int(self.move_duration * self.update_rate)
         self.step_duration = 1.0 / self.update_rate
         self.joint_names = [
@@ -39,7 +39,7 @@ class ConveyorController(Node):
             return
 
         # map each pusher to a target angle
-        angle_map = [45.0, 45.0, 45.0, 45.0]
+        angle_map = [60.0, 60.0, 60.0, 60.0]
         target = angle_map[idx]
         self.get_logger().info(f"Pusher {pidx} → moving arm {idx+1} to {target}°")
         self.move_arm(idx, target)

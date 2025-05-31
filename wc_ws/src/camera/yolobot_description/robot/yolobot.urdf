@@ -86,7 +86,7 @@
 	</link>
 
   <joint name="rgb_cam_camera_link_joint" type="fixed">
-		<origin rpy="0 0 0" xyz="0.0 -2.4 1.55"/>
+		<origin rpy="0 0 0" xyz="0.0 -3.0 1.55"/>
 		<parent link="chassis"/>
 		<child link="rgb_cam_camera_link"/>s
 	</joint>

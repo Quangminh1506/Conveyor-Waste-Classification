@@ -4,17 +4,15 @@
 #
 # Lines starting with “#” or blank lines are ignored.
 
-# 1) Default-pose spawn (uses 0.0, -3.3, 0.76, 0,0,0)
 coca.sdf,      coca
+metal.sdf,     metal
+metal.sdf, metal3,
+coca.sdf, coca1,
+metal.sdf, metal2,
 
-# 2) Another default-pose
-coca.sdf,     pepsi
+organic.sdf,    organic1,    
+metal.sdf, metal2,
 
-# 3) Custom XY only (Z+angles default)
-coca.sdf,     fanta,      
+organic.sdf,    organic2,    
 
-# 4) Full custom pose (meters + radians)
-coca.sdf,    sprite,    
 
-# 5) Mixed: override Z but keep default roll/pitch/yaw
-coca.sdf, dew,    
