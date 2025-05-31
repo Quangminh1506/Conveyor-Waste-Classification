@@ -62,14 +62,14 @@
     </effect>
     <effect id="label_001-effect">
       <profile_COMMON>
-        <newparam sid="paper_jpg-surface">
+        <newparam sid="paper_block_jpg-surface">
           <surface type="2D">
-            <init_from>paper_jpg</init_from>
+            <init_from>paper_block_jpg</init_from>
           </surface>
         </newparam>
-        <newparam sid="paper_jpg-sampler">
+        <newparam sid="paper_block_jpg-sampler">
           <sampler2D>
-            <source>paper_jpg-surface</source>
+            <source>paper_block_jpg-surface</source>
           </sampler2D>
         </newparam>
         <technique sid="common">
@@ -78,7 +78,7 @@
               <color sid="emission">0 0 0 1</color>
             </emission>
             <diffuse>
-              <texture texture="paper_jpg-sampler" texcoord="UVMap"/>
+              <texture texture="paper_block_jpg-sampler" texcoord="UVMap"/>
             </diffuse>
             <index_of_refraction>
               <float sid="ior">1.5</float>
@@ -89,8 +89,8 @@
     </effect>
   </library_effects>
   <library_images>
-    <image id="paper_jpg" name="paper_jpg">
-      <init_from>paper.jpg</init_from>
+    <image id="paper_block_jpg" name="paper_block_jpg">
+      <init_from>paper_block.jpg</init_from>
     </image>
   </library_images>
   <library_materials>
