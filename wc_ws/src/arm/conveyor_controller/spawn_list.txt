@@ -1,0 +1,20 @@
+# spawn_list.txt
+# Format:
+#   model_sdf, prefix[, x, y, z, roll, pitch, yaw]
+#
+# Lines starting with “#” or blank lines are ignored.
+
+# 1) Default-pose spawn (uses 0.0, -3.3, 0.76, 0,0,0)
+coca.sdf,      coca
+
+# 2) Another default-pose
+coca.sdf,     pepsi
+
+# 3) Custom XY only (Z+angles default)
+coca.sdf,     fanta,      
+
+# 4) Full custom pose (meters + radians)
+coca.sdf,    sprite,    
+
+# 5) Mixed: override Z but keep default roll/pitch/yaw
+coca.sdf, dew,    

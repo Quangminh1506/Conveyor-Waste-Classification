@@ -1,11 +1,12 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
 package_name = 'conveyor_controller'
 
 setup(
     name=package_name,
     version='0.0.1',
-    packages=[package_name],
+    # Automatically include conveyor_controller and its subpackages (like scripts)
+    packages=find_packages(include=[package_name, f"{package_name}.*"]),
     data_files=[
         ('share/ament_index/resource_index/packages',
             ['resource/' + package_name]),
@@ -21,6 +22,7 @@ setup(
     entry_points={
         'console_scripts': [
             'controller = conveyor_controller.controller:main',
+            'file_spawner = conveyor_controller.scripts.file_spawner:main',
         ],
     },
 )

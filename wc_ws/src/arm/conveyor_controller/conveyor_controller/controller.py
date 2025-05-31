@@ -14,7 +14,7 @@ class ConveyorController(Node):
         #Config hold, move time of arm
         self.update_rate = 300.0  # 300 Hz
         self.move_duration = 1.0 
-        self.hold_duration = 7.0
+        self.hold_duration = 5.0  # seconds to hold position
         self.num_steps = int(self.move_duration * self.update_rate)
         self.step_duration = 1.0 / self.update_rate
         self.joint_names = [
