@@ -18,7 +18,7 @@
         <geometry>
           <mesh>
             <scale>0.2 0.2 0.2</scale>
-            <uri>model://organic_block1/meshes/metal_block.stl</uri>
+            <uri>model://organic_block1/meshes/organic_block.stl</uri>
           </mesh>
         </geometry>
         <surface>
@@ -31,7 +31,7 @@
         <geometry>
           <mesh>
             <scale>0.2 0.2 0.2</scale>
-            <uri>model://organic_block1/meshes/metal_block.dae</uri>
+            <uri>model://organic_block1/meshes/organic_block.dae</uri>
           </mesh>
         </geometry>
       </visual>
