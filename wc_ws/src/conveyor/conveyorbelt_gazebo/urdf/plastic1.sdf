@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <sdf version="1.6">
-  <model name="plastic_block4">
+  <model name="plastic_block1">
     <!-- dynamic, not static -->
     <static>false</static>
     <!-- X  Y   Z    R      P    Y -->
