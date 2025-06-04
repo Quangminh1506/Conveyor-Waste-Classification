@@ -17,7 +17,7 @@
       <collision name="collision">
         <geometry>
           <mesh>
-            <scale>0.15 0.15 0.15</scale>
+            <scale>0.3 0.3 0.3</scale>
             <uri>model://coca_block/meshes/coca_block.stl</uri>
           </mesh>
         </geometry>
@@ -30,7 +30,7 @@
       <visual name="visual">
         <geometry>
           <mesh>
-            <scale>0.15 0.15 0.15</scale>
+            <scale>0.3 0.3 0.3</scale>
             <uri>model://coca_block/meshes/coca_block.dae</uri>
           </mesh>
         </geometry>
