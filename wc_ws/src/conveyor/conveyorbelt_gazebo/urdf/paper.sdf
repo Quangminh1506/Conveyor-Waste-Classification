@@ -17,20 +17,20 @@
       <collision name="collision">
         <geometry>
           <mesh>
-            <scale>0.2 0.2 0.2</scale>
+            <scale>0.3 0.3 0.3</scale>
             <uri>model://paper_block/meshes/paper_block.stl</uri>
           </mesh>
         </geometry>
         <surface>
           <friction>
-            <ode><mu>1.2</mu><mu2>1.2</mu2></ode>
+            <ode><mu>0.04</mu><mu2>0.04</mu2></ode>
           </friction>
         </surface>
       </collision>
       <visual name="visual">
         <geometry>
           <mesh>
-            <scale>0.2 0.2 0.2</scale>
+            <scale>0.3 0.3 0.3</scale>
             <uri>model://paper_block/meshes/paper_block.dae</uri>
           </mesh>
         </geometry>
